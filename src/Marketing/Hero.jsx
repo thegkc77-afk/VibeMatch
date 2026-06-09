@@ -1,5 +1,7 @@
 import '../Style/hero.css'
 import { LuZap, LuMapPin, LuMessageCircle, LuTarget } from "react-icons/lu";
+import pokieImg from '../assets/pokie.png';
+
 
 function Hero() {
   return (
@@ -65,18 +67,19 @@ function Hero() {
             </svg>
           </div>
           
-          {/* Floating Lightning Badge */}
+          {/* Floating Lightning Badge (Pokie Bow) */}
           <div className="floating-badge badge-lightning">
-            <svg viewBox="0 0 24 24" width="42" height="42" fill="url(#3d-lightning-grad)" style={{ filter: 'drop-shadow(0 8px 16px rgba(249, 115, 22, 0.45))' }}>
-              <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              <defs>
-                <radialGradient id="3d-lightning-grad" cx="30%" cy="30%" r="70%">
-                  <stop offset="0%" stopColor="#fef08a" />
-                  <stop offset="40%" stopColor="#f97316" />
-                  <stop offset="100%" stopColor="#c2410c" />
-                </radialGradient>
-              </defs>
-            </svg>
+            <img 
+              src={pokieImg} 
+              alt="Pokie Bow" 
+              className="pokie-badge-img"
+              style={{ 
+                width: '46px', 
+                height: '46px', 
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 8px 16px rgba(244, 114, 182, 0.5))' 
+              }} 
+            />
           </div>
 
           {/* Floating Message Badge */}

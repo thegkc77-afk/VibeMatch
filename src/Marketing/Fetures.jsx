@@ -1,4 +1,5 @@
 import "../Style/features.css";
+import { motion } from "framer-motion";
 
 import {  MapPin,  Smile,  Zap,  Camera,  MessageCircle,  Pizza,} from "lucide-react";
 
@@ -42,6 +43,27 @@ const Features = () => {
     },
   ];
 
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="features-section">
 
@@ -49,25 +71,41 @@ const Features = () => {
       <div className="bg-glow"></div>
 
       {/* Heading */}
-      <h1 className="features-heading">
+      <motion.h1 
+        className="features-heading"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         Everything You Need To Start <br/>
-        <span>Real Connections</span>
-      </h1>
+        <span className="animated-gradient-text">Real Connections</span>
+      </motion.h1>
 
       {/* Cards */}
-      <div className="features-grid">
+      <motion.div 
+        className="features-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+      >
         {featuresData.map((item, index) => (
-          <div className="feature-card" key={index}>
-            <div className={`icon-box ${item.color}`}>
+          <motion.div 
+            className={`feature-card ${item.color}`} 
+            key={index}
+            variants={cardVariants}
+          >
+            <div className="feature-icon">
               {item.icon}
             </div>
 
-            <h2>{item.title}</h2>
+            <h3>{item.title}</h3>
 
             <p>{item.desc}</p>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

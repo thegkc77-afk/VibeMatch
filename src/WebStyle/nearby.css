@@ -1532,3 +1532,64 @@
 .btn-modal-save:hover {
   background: #6244ea;
 }
+
+/* ===== Responsive Tweaks for Nearby Screen ===== */
+@media (max-width: 1024px) {
+  .nearby-container {
+    padding: 20px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nearby-container {
+    padding: 12px 10px;
+    gap: 16px;
+  }
+  .people-card {
+    border-radius: 20px;
+  }
+  .people-card-details-side {
+    padding: 14px 16px;
+  }
+  .radar-map-view {
+    height: 400px;
+  }
+}
+
+@media (max-width: 580px) {
+  .people-card {
+    flex-direction: column;
+  }
+  .people-card-avatar-side {
+    width: 100%;
+    height: 200px;
+  }
+  .people-vibe-tags {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .people-card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .card-actions {
+    width: 100%;
+  }
+  .btn-chat, .btn-join {
+    width: 100%;
+    justify-content: center;
+  }
+  .detail-action-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .detail-action-footer button {
+    width: 100%;
+    justify-content: center;
+  }
+  .date-time-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

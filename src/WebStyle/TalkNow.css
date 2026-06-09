@@ -3,7 +3,7 @@
 .talknow-container {
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;
+  margin: auto;
   color: #ffffff;
   font-family: 'Outfit', sans-serif;
   min-height: calc(100vh - 120px);

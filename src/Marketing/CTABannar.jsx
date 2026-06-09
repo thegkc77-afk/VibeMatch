@@ -2,13 +2,48 @@
 
 import "../Style/CTABannar.css";
 import { Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 const CTABanner = ({ onEarlyAccessClick }) => {
   return (
     <section className="cta-section">
+      {/* Background Decorative Orbs */}
+      <motion.div 
+        className="cta-orb cta-orb-purple"
+        animate={{
+          scale: [1, 1.15, 1],
+          x: [0, 30, 0],
+          y: [0, -30, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="cta-orb cta-orb-pink"
+        animate={{
+          scale: [1, 1.2, 1],
+          x: [0, -30, 0],
+          y: [0, 30, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2
+        }}
+      />
+
       <div className="cta-container">
-        <div className="cta-card">
-          
+        <motion.div 
+          className="cta-card"
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Top Badge */}
           <div className="cta-badge">
             <Sparkles className="badge-icon" />
@@ -18,7 +53,7 @@ const CTABanner = ({ onEarlyAccessClick }) => {
           {/* Heading */}
           <h2 className="cta-heading">
             Ready To Find Your{" "}
-            <span className="gradient-text">
+            <span className="gradient-text animated-gradient-text">
               Perfect Vibe?
             </span>
           </h2>
@@ -43,7 +78,7 @@ const CTABanner = ({ onEarlyAccessClick }) => {
               Learn More
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

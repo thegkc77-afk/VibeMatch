@@ -19,6 +19,8 @@
   overflow-y: auto;
   position: relative;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Ambient glow inside dashboard main content */

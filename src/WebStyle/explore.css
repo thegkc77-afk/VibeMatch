@@ -287,3 +287,28 @@
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
+
+/* ===== Responsive Tweaks for Explore Screen ===== */
+@media (max-width: 768px) {
+  .explore-container {
+    padding: 20px 12px;
+    gap: 16px;
+  }
+  .create-post-widget {
+    border-radius: 20px;
+    padding: 8px 12px;
+  }
+  .post-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .post-actions {
+    gap: 12px;
+  }
+  .post-action-btn {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}

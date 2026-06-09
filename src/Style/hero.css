@@ -41,10 +41,14 @@
 }
 
 .hero-left span {
-  background: linear-gradient(90deg, #7b61ff 0%, #d946ef 100%);
+  display: inline-block;
+  background: linear-gradient(90deg, #7b61ff 0%, #d946ef 50%, #7b61ff 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shimmer 2s linear infinite, pulseScale 2.5s ease-in-out infinite;
+  transform-origin: left center;
 }
 
 .hero-left p {
@@ -165,9 +169,12 @@
 }
 
 @keyframes floatCard {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
@@ -264,21 +271,36 @@
   0% {
     transform: translateY(0) rotate(-8deg);
   }
+
   100% {
     transform: translateY(-6px) rotate(8deg);
   }
 }
 
 .badge-lightning {
-  top: -16px;
-  right: -16px;
+  bottom: -20px;
+  left: -24px;
   animation: lightningGlow 2.5s ease-in-out infinite alternate;
+}
+
+.pokie-badge-img {
+  border-radius: 16px;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 24px rgba(244, 114, 182, 0.3);
+  transition: all 0.3s ease;
+}
+
+.badge-lightning:hover .pokie-badge-img {
+  transform: scale(1.1);
+  border-color: rgba(244, 114, 182, 0.4);
+  box-shadow: 0 12px 32px rgba(244, 114, 182, 0.5);
 }
 
 @keyframes lightningGlow {
   0% {
     transform: scale(1) rotate(5deg);
   }
+
   100% {
     transform: scale(1.1) rotate(-5deg);
   }
@@ -294,6 +316,7 @@
   0% {
     transform: translateY(0) scale(1);
   }
+
   100% {
     transform: translateY(6px) scale(1.05);
   }
@@ -314,6 +337,10 @@
 
   .hero-left h1 {
     font-size: 48px;
+  }
+
+  .hero-left span {
+    transform-origin: center center;
   }
 
   .hero-left p {
@@ -345,7 +372,8 @@
     gap: 12px;
   }
 
-  .start-btn, .explore-btn {
+  .start-btn,
+  .explore-btn {
     width: 100%;
   }
 

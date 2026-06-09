@@ -1,6 +1,7 @@
 // HowItWorks.jsx
 
 import '../Style/howitwork.css';
+import { motion } from 'framer-motion';
 
 import {
   UserPlus,
@@ -43,12 +44,18 @@ const Howitwork = () => {
 
       <div className="how-container">
         {/* Heading */}
-        <div className="how-heading">
+        <motion.div 
+          className="how-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2>
             Find Your Vibe in{" "}
-            <span>4 Simple Steps</span>
+            <span className="animated-gradient-text">4 Simple Steps</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="timeline-wrapper">
@@ -57,19 +64,39 @@ const Howitwork = () => {
           <div className="timeline-steps">
             {steps.map((step, index) => {
               const Icon = step.icon;
+              const isEven = index % 2 === 0;
 
               return (
                 <div
                   key={index}
                   className={`timeline-step ${
-                    index % 2 === 0
+                    isEven
                       ? "left-layout"
                       : "right-layout"
                   }`}
                 >
                   {/* Content */}
-                  <div className="step-content">
-                    <div className="step-card">
+                  <motion.div 
+                    className="step-content"
+                    initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.15,
+                      ease: "easeOut"
+                    }}
+                  >
+                    <motion.div 
+                      className="step-card"
+                      whileHover={{
+                        y: -8,
+                        scale: 1.02,
+                        borderColor: "rgba(123, 97, 255, 0.65)",
+                        boxShadow: "0 16px 48px rgba(123, 97, 255, 0.25), 0 0 20px rgba(123, 97, 255, 0.15)"
+                      }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                    >
                       <div className="step-flex">
                         <div className="step-icon">
                           <Icon />
@@ -85,8 +112,8 @@ const Howitwork = () => {
                           <p>{step.description}</p>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
 
                   {/* Dot */}
                   <div className="timeline-dot">

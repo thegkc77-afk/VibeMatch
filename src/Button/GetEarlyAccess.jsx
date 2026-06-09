@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, Mail, Lock, Heart, MapPin, MessageCircle, User } from 'lucide-react';
+import { X, Mail, Lock, User } from 'lucide-react';
 import Navbar from '../Component/Navbar';
+import Logo from '../Component/Logo';
 import '../Style/getearlyaccess.css';
 
 function GetEarlyAccess() {
@@ -53,33 +54,7 @@ function GetEarlyAccess() {
             {/* LEFT SECTION - Branding (Hidden on mobile) */}
             <div className="brand-column">
               <div className="brand-title-row">
-                <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                  <MapPin className="w-12 h-12 text-[#B9A7FF]" style={{ color: '#B9A7FF', width: '48px', height: '48px' }} fill="#F7A8C8" />
-                  <Heart
-                    className="w-6 h-6 text-[#F7A8C8]"
-                    style={{
-                      color: '#F7A8C8',
-                      width: '24px',
-                      height: '24px',
-                      position: 'absolute',
-                      top: '6px',
-                      left: '50%',
-                      transform: 'translateX(-50%)'
-                    }}
-                  />
-                  <MessageCircle
-                    className="w-4 h-4 text-white"
-                    style={{
-                      color: '#ffffff',
-                      width: '16px',
-                      height: '16px',
-                      position: 'absolute',
-                      bottom: '6px',
-                      right: '4px'
-                    }}
-                  />
-                </div>
-                <h1>VibeMatch</h1>
+                <Logo size={48} showText={true} animated={true} />
               </div>
               <p className="tagline">Hyperlocal vibes for the next generation.</p>
 
