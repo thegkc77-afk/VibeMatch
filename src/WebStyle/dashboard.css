@@ -1,0 +1,113 @@
+/* dashboard.css */
+
+.dashboard-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: radial-gradient(circle at top left, #1a0f2e 0%, #0A0A14 70%, #080114 100%);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Sidebar styles moved to vibeMatch/src/WebStyle/sidebar.css */
+
+/* Dashboard Content Panel */
+.dashboard-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Ambient glow inside dashboard main content */
+.dashboard-ambient-glow {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.08) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mobile Toggle Header */
+.dashboard-mobile-header {
+  display: none;
+  height: 60px;
+  background: rgba(15, 15, 25, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  padding: 0 16px;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-sizing: border-box;
+}
+
+.hamburger-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-logo-text {
+  font-weight: 800;
+  font-size: 18px;
+  background: linear-gradient(90deg, #B9A7FF 0%, #F7A8C8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .dashboard-mobile-header {
+    display: flex;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.6);
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Overlay backdrop for mobile when sidebar is open */
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 95;
+    animation: fadeIn 0.3s ease;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

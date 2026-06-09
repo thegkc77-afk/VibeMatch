@@ -1,0 +1,160 @@
+/* CTABanner.css */
+
+.cta-section {
+  position: relative;
+  padding: 100px 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #110924 0%, #290f28 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ===== Container ===== */
+.cta-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== Card ===== */
+.cta-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 48px;
+  padding: 80px 40px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ===== Badge ===== */
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 28px;
+}
+
+.badge-icon {
+  width: 16px;
+  height: 16px;
+  color: #ec4899;
+  /* Pink sparkles */
+}
+
+.cta-badge span {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ===== Heading ===== */
+.cta-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 24px 0;
+  letter-spacing: -0.02em;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #6366f1 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Description ===== */
+.cta-description {
+  margin: 0 auto 40px auto;
+  max-width: 720px;
+  color: #a0a0b2;
+  /* Muted slate/lavender matching the image */
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* ===== Buttons ===== */
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Primary Button */
+.primary-btn {
+  padding: 14px 36px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1 0%, #ec4899 100%);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35);
+  opacity: 0.95;
+}
+
+/* Secondary Button */
+.secondary-btn {
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 80px 16px;
+  }
+
+  .cta-card {
+    padding: 60px 24px;
+    border-radius: 36px;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    padding: 14px;
+  }
+}

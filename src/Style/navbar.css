@@ -1,0 +1,101 @@
+/* navbar.css */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 40px;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+    width: 100%;
+    transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, padding 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 14px 40px;
+    background: rgba(8, 1, 20, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.purple-text {
+    color: #7b61ff;
+}
+
+.pink-text {
+    color: #ec4899;
+}
+
+.nav-links {
+    display: flex;
+    column-gap: 28px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: #7b61ff;
+}
+
+.nav-btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #7b61ff, #ec4899);
+    color: white;
+    cursor: pointer;  
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Outfit', sans-serif;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 20px;
+    }
+    .navbar.scrolled {
+        padding: 12px 20px;
+    }
+    .nav-links {
+        display: none; /* Hide standard links on mobile if responsive menu isn't set up yet */
+    }
+}

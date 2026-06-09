@@ -1,0 +1,159 @@
+/* ===== Features Section ===== */
+
+.features-section {
+  min-height: 80vh;
+  background: #050511;
+  padding: 100px 8%;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background glow */
+.features-section::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 140, 0.18),
+    transparent 70%
+  );
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.features-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Heading ===== */
+
+.features-heading {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 70px;
+}
+
+.features-heading span {
+  background: linear-gradient(90deg, #8b5cf6, #ff4db8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Grid ===== */
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* ===== Cards ===== */
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.feature-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(255, 0, 140, 0.12);
+}
+
+/* Glow inside card */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(139, 92, 246, 0.12),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Icon Box ===== */
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  background: rgba(139, 92, 246, 0.12);
+  color: #8b5cf6;
+}
+
+.feature-icon svg {
+  width: 34px;
+  height: 34px;
+}
+
+/* Pink variation */
+.feature-card:nth-child(even) .feature-icon {
+  background: rgba(255, 77, 184, 0.12);
+  color: #ff4db8;
+}
+
+/* ===== Text ===== */
+
+.feature-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.feature-card p {
+  color: #9f9fb3;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ===== Responsive ===== */
+
+@media (max-width: 1100px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-heading {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .features-heading {
+    font-size: 2.2rem;
+  }
+
+  .feature-card {
+    padding: 30px;
+  }
+}
