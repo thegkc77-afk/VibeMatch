@@ -141,21 +141,29 @@
 
 /* Logo Text styling */
 .vibematch-logo-text {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
+  font-family: var(--font-espiritu-regular);
+  font-weight: 700;
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
 }
 
 .logo-text-vibe {
+  font-family: var(--font-espiritu-script);
+  font-weight: 500;
+  font-size: 1.05em;
+  letter-spacing: -0.2px;
   background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  line-height: 1;
 }
 
 .logo-text-match {
+  font-family: var(--font-espiritu-regular);
+  font-weight: 800;
+  font-style: italic;
   background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

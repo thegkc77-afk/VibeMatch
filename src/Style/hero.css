@@ -33,15 +33,21 @@
 }
 
 .hero-left h1 {
+  font-family: var(--font-espiritu-regular);
   color: #ffffff;
   font-size: 60px;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
 
 .hero-left span {
   display: inline-block;
+  font-family: var(--font-espiritu-script);
+  font-size: 1.0em;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   background: linear-gradient(90deg, #7b61ff 0%, #d946ef 50%, #7b61ff 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -115,13 +121,13 @@
   align-items: center;
   gap: 12px;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .hero-feature-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 

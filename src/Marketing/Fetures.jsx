@@ -66,46 +66,47 @@ const Features = () => {
 
   return (
     <section className="features-section">
-
       {/* Background Glow */}
       <div className="bg-glow"></div>
 
-      {/* Heading */}
-      <motion.h1 
-        className="features-heading"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        Everything You Need To Start <br/>
-        <span className="animated-gradient-text">Real Connections</span>
-      </motion.h1>
+      <div className="features-container">
+        {/* Heading */}
+        <motion.h1 
+          className="features-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          Everything You Need To Start <br/>
+          <span className="animated-gradient-text">Real Connections</span>
+        </motion.h1>
 
-      {/* Cards */}
-      <motion.div 
-        className="features-grid"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.15 }}
-      >
-        {featuresData.map((item, index) => (
-          <motion.div 
-            className={`feature-card ${item.color}`} 
-            key={index}
-            variants={cardVariants}
-          >
-            <div className="feature-icon">
-              {item.icon}
-            </div>
+        {/* Cards */}
+        <motion.div 
+          className="features-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          {featuresData.map((item, index) => (
+            <motion.div 
+              className={`feature-card ${item.color}`} 
+              key={index}
+              variants={cardVariants}
+            >
+              <div className="feature-icon">
+                {item.icon}
+              </div>
 
-            <h3>{item.title}</h3>
+              <h3>{item.title}</h3>
 
-            <p>{item.desc}</p>
-          </motion.div>
-        ))}
-      </motion.div>
+              <p>{item.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 };
