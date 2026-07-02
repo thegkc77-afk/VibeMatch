@@ -14,8 +14,6 @@ import {
   ArrowLeft, 
   MoreVertical, 
   Phone, 
-  Compass, 
-  Coffee, 
   Check, 
   Sliders, 
   X, 
@@ -82,8 +80,11 @@ function Nearby() {
       const userId = location.state.openChatWith;
       const matched = users.find(u => u.id === userId);
       if (matched) {
-        setSelectedUser(matched);
-        setCurrentScreen('chat');
+        // Defer state updates to avoid synchronous cascading renders inside useEffect
+        setTimeout(() => {
+          setSelectedUser(matched);
+          setCurrentScreen('chat');
+        }, 0);
         // Clear history state to avoid re-triggering chat window on refresh
         window.history.replaceState({}, document.title);
       }

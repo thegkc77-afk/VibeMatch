@@ -1,6 +1,5 @@
 import '../Style/about.css';
 import { Link } from 'react-router-dom';
-import { X, Check } from 'lucide-react';
 import Footer from '../Component/Footer';
 
 function About() {

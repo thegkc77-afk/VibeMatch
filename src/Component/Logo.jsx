@@ -1,4 +1,3 @@
-import React from 'react';
 import '../Style/logo.css';
 
 function Logo({ size = 32, showText = true, animated = true, className = '' }) {

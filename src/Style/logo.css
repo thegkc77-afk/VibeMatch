@@ -142,7 +142,7 @@
 /* Logo Text styling */
 .vibematch-logo-text {
   font-family: var(--font-espiritu-regular);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.5px;
   display: flex;
   align-items: center;
@@ -150,7 +150,7 @@
 
 .logo-text-vibe {
   font-family: var(--font-espiritu-script);
-  font-weight: 500;
+  font-weight: 800;
   font-size: 1.05em;
   letter-spacing: -0.2px;
   background: linear-gradient(135deg, #a855f7 0%, #8b5cf6 100%);

@@ -1,10 +1,10 @@
 // Help.jsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 import "../Style/help.css";
 import Footer from "../Component/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, MessageSquare, MapPin, Send, CheckCircle, Clock } from "lucide-react";
+import { Mail, MessageSquare, MapPin, Send, CheckCircle } from "lucide-react";
 
 function Help() {
   const [formData, setFormData] = useState({

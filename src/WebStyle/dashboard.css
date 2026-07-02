@@ -7,7 +7,7 @@
   overflow: hidden;
   background: radial-gradient(circle at top left, #1a0f2e 0%, #0A0A14 70%, #080114 100%);
   color: #ffffff;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-body);
 }
 
 /* Sidebar styles moved to vibeMatch/src/WebStyle/sidebar.css */
@@ -112,4 +112,22 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Custom premium scrollbar for dashboard content */
+.dashboard-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dashboard-content::-webkit-scrollbar-track {
+  background: rgba(8, 1, 20, 0.4);
+}
+
+.dashboard-content::-webkit-scrollbar-thumb {
+  background: rgba(123, 97, 255, 0.3);
+  border-radius: 4px;
+}
+
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(123, 97, 255, 0.5);
 }

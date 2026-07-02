@@ -52,9 +52,9 @@
 }
 
 .help-header h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-espiritu-regular);
   font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
   margin-bottom: 16px;
 }
@@ -151,7 +151,7 @@
 }
 
 .support-details h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-espiritu-regular);
   font-size: 1.35rem;
   font-weight: 700;
   margin-bottom: 6px;
@@ -240,9 +240,9 @@
 }
 
 .help-form-card h2 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-espiritu-regular);
   font-size: 1.8rem;
-  font-weight: 750;
+  font-weight: 700;
   margin-bottom: 28px;
   background: linear-gradient(90deg, #ffffff, #d946ef);
   -webkit-background-clip: text;
@@ -305,7 +305,7 @@ textarea.form-input {
   border-radius: 14px;
   background: linear-gradient(90deg, #7b61ff 0%, #d946ef 100%);
   color: white;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -364,9 +364,9 @@ textarea.form-input {
 }
 
 .success-container h2 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-espiritu-regular);
   font-size: 2rem;
-  font-weight: 750;
+  font-weight: 700;
   margin-bottom: 12px;
   background: linear-gradient(90deg, #10b981, #34d399);
   -webkit-background-clip: text;

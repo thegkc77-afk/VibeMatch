@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, Mail, Lock, User } from 'lucide-react';
+import { Mail, Lock, User } from 'lucide-react';
 import Navbar from '../Component/Navbar';
 import Logo from '../Component/Logo';
 import '../Style/getearlyaccess.css';
@@ -11,19 +11,6 @@ function GetEarlyAccess() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-
-  const handleClose = () => {
-    // Navigate back to the home page or previous page
-    navigate('/');
-  };
-
-  const handleLogoClick = () => {
-    navigate('/');
-  };
-
-  const handleNavClick = (path) => {
-    navigate(path);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

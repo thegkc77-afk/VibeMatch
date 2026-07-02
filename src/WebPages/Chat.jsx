@@ -4,9 +4,6 @@ import {
   MapPin, 
   Search, 
   Bell, 
-  Plus, 
-  Heart, 
-  MessageCircle, 
   Send, 
   Calendar, 
   Clock, 
@@ -14,11 +11,11 @@ import {
   MoreVertical, 
   Phone, 
   Check, 
-  Sliders, 
   X,
   ChevronDown,
   MessageSquare
 } from 'lucide-react';
+import { io } from 'socket.io-client';
 import { getStoredUsers, saveStoredUsers, ACTIVE_USER } from '../data/mockData';
 import '../WebStyle/chat.css';
 
@@ -26,6 +23,7 @@ function Chat() {
   const navigate = useNavigate();
   const location = useLocation();
   const chatBottomRef = useRef(null);
+  const socketRef = useRef(null);
 
   // Users database synced from localStorage
   const [users, setUsers] = useState(getStoredUsers());
@@ -47,13 +45,70 @@ function Chat() {
     saveStoredUsers(users);
   }, [users]);
 
+  // Connect to Socket.io backend
+  useEffect(() => {
+    const socket = io('http://localhost:5000');
+    socketRef.current = socket;
+
+    socket.emit('join', 'me');
+
+    socket.on('receiveMessage', (data) => {
+      if (data.senderId !== 'me' && data.receiverId === 'me') {
+        let text = data.message;
+        let isInvite = false;
+        let inviteDetails = null;
+
+        try {
+          const parsed = JSON.parse(data.message);
+          text = parsed.text;
+          isInvite = parsed.isInvite;
+          inviteDetails = parsed.inviteDetails;
+        } catch (e) {
+          // not JSON, fallback to plain text
+        }
+
+        const incomingMsg = {
+          id: Date.now() + Math.random(),
+          sender: 'them',
+          text: text,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          isInvite: isInvite,
+          ...(inviteDetails && { inviteDetails })
+        };
+
+        setUsers((prevUsers) => {
+          return prevUsers.map((u) => {
+            if (u.id === data.senderId) {
+              return { ...u, messages: [...u.messages, incomingMsg] };
+            }
+            return u;
+          });
+        });
+
+        setSelectedUser((prevSelected) => {
+          if (prevSelected && prevSelected.id === data.senderId) {
+            return { ...prevSelected, messages: [...prevSelected.messages, incomingMsg] };
+          }
+          return prevSelected;
+        });
+      }
+    });
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   // Handle route state if navigated from Talk Now or Nearby card
   useEffect(() => {
     if (location.state && location.state.openChatWith) {
       const userId = location.state.openChatWith;
       const matchedUser = users.find(u => u.id === userId);
       if (matchedUser) {
-        setSelectedUser(matchedUser);
+        // Defer state updates to avoid synchronous cascading renders inside useEffect
+        setTimeout(() => {
+          setSelectedUser(matchedUser);
+        }, 0);
         // Clean location state to prevent repeating on refresh
         window.history.replaceState({}, document.title);
       }
@@ -84,6 +139,18 @@ function Chat() {
       text: textToSend,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
+
+    // Emit to socket
+    if (socketRef.current) {
+      socketRef.current.emit('sendMessage', {
+        senderId: 'me',
+        receiverId: selectedUser.id,
+        message: JSON.stringify({
+          text: textToSend,
+          isInvite: false
+        })
+      });
+    }
 
     const updatedMessages = [...selectedUser.messages, newMsg];
 
@@ -119,6 +186,24 @@ function Chat() {
         note: meetNote
       }
     };
+
+    // Emit to socket
+    if (socketRef.current) {
+      socketRef.current.emit('sendMessage', {
+        senderId: 'me',
+        receiverId: selectedUser.id,
+        message: JSON.stringify({
+          text: inviteText,
+          isInvite: true,
+          inviteDetails: {
+            place: selectedPlace,
+            date: meetDate,
+            time: meetTime,
+            note: meetNote
+          }
+        })
+      });
+    }
 
     const updatedMessages = [...selectedUser.messages, newMsg];
 
