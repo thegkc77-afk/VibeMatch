@@ -289,18 +289,128 @@
 }
 
 /* ===== Responsive Tweaks for Explore Screen ===== */
+/* Header Section */
+.explore-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.explore-brand-title {
+  font-size: 20px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #b9a7ff 0%, #f7a8c8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  font-family: var(--font-body);
+}
+
+.dashboard-hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #ec4899;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #12101d;
+}
+
+.header-profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7b61ff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.header-profile-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* ===== Responsive Tweaks for Explore Screen ===== */
 @media (max-width: 768px) {
+  .dashboard-hamburger-btn {
+    display: flex;
+  }
+  .explore-header {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(18, 16, 29, 0.65);
+    padding: 12px 16px;
+  }
   .explore-container {
-    padding: 20px 12px;
+    padding: 0 0 20px 0;
     gap: 16px;
   }
   .create-post-widget {
     border-radius: 20px;
     padding: 8px 12px;
+    margin: 0 12px;
   }
   .post-card {
     padding: 16px;
     border-radius: 16px;
+    margin: 0 12px;
   }
 }
 @media (max-width: 480px) {

@@ -1,8 +1,11 @@
 import { useState, useRef } from 'react';
-import { Image as ImageIcon, Plus, MoreVertical, Heart, MessageCircle } from 'lucide-react';
+import { useOutletContext, useNavigate } from 'react-router-dom';
+import { Image as ImageIcon, Plus, MoreVertical, Heart, MessageCircle, Menu, Bell } from 'lucide-react';
 import '../WebStyle/explore.css';
 
 function Explore() {
+  const navigate = useNavigate();
+  const { toggleSidebar } = useOutletContext();
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -86,6 +89,26 @@ function Explore() {
 
   return (
     <div className="explore-container">
+      {/* 1. Global Header */}
+      <header className="explore-header">
+        <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={24} />
+        </button>
+        <h2 className="explore-brand-title">Explore Feed</h2>
+        <div className="header-actions">
+          <button className="icon-btn" aria-label="Notifications" onClick={() => navigate('/notification')}>
+            <Bell size={20} />
+            <span className="notification-badge">3</span>
+          </button>
+          <img 
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" 
+            alt="Logged in user profile" 
+            className="header-profile-avatar" 
+            onClick={() => navigate('/profile')}
+          />
+        </div>
+      </header>
+
       {/* Top Creation Widget */}
       <form className="create-post-widget" onSubmit={handlePostSubmit}>
         <div className="upload-btn-container">

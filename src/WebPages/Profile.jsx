@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { 
   MapPin, 
   ChevronDown, 
@@ -15,7 +15,8 @@ import {
   Heart,
   MessageCircle,
   MessageSquare,
-  X
+  X,
+  Menu
 } from 'lucide-react';
 import '../WebStyle/Profile.css';
 
@@ -123,6 +124,8 @@ const MOCK_FOLLOWING = [
 ];
 
 function Profile({ isSidebar, closeSidebar }) {
+  const context = useOutletContext();
+  const toggleSidebar = context ? context.toggleSidebar : undefined;
   const navigate = useNavigate();
   
   // Load profile state from localStorage or use default
@@ -154,8 +157,8 @@ function Profile({ isSidebar, closeSidebar }) {
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   // Instagram-style Profile states
-  const [posts, setPosts] = useState(MOCK_POSTS);
-  const [sharedVibes, setSharedVibes] = useState(MOCK_SHARED_VIBES);
+  const [posts] = useState(MOCK_POSTS);
+  const [sharedVibes] = useState(MOCK_SHARED_VIBES);
   const [following, setFollowing] = useState(MOCK_FOLLOWING);
   const [activeTab, setActiveTab] = useState('posts'); // 'posts', 'shared_vibes', 'following'
   const [selectedPost, setSelectedPost] = useState(null);
@@ -165,8 +168,8 @@ function Profile({ isSidebar, closeSidebar }) {
 
   // Sync back local state changes when profile loads
   useEffect(() => {
-    setAvatarError(false);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
+      setAvatarError(false);
       setNameInput(profile.name);
       setLocationInput(profile.location);
       setBioInput(profile.bio);
@@ -177,6 +180,7 @@ function Profile({ isSidebar, closeSidebar }) {
       setInvisible(profile.invisibleMode);
       setOnlineStatus(profile.showOnlineStatus);
     }, 0);
+    return () => clearTimeout(timer);
   }, [profile]);
 
   // Handle Save profile changes
@@ -252,6 +256,9 @@ function Profile({ isSidebar, closeSidebar }) {
     <div className="profilepage-container">
       {/* 1. Dashboard Header */}
       <header className="profilepage-header">
+        <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={24} />
+        </button>
         <div className="location-selector" onClick={() => navigate('/nearby')}>
           <MapPin size={18} style={{ color: '#7b61ff' }} />
           <span className="location-text">{profile.location}</span>

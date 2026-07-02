@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import { Menu } from 'lucide-react';
 import '../WebStyle/dashboard.css';
 
 function DashboardLayout() {
@@ -22,15 +21,6 @@ function DashboardLayout() {
         <div className="sidebar-backdrop" onClick={closeSidebar} />
       )}
 
-      {/* Mobile Toggle Header */}
-      <header className="dashboard-mobile-header">
-        <button className="hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
-          <Menu size={24} />
-        </button>
-        <span className="mobile-logo-text">VibeMatch</span>
-        <div style={{ width: '40px' }} /> {/* Balance space */}
-      </header>
-
       {/* Sidebar Panel */}
       <Sidebar mobileOpen={mobileOpen} closeSidebar={closeSidebar} />
 
@@ -40,7 +30,7 @@ function DashboardLayout() {
         <div className="dashboard-ambient-glow"></div>
         
         {/* Child Router Views */}
-        <Outlet />
+        <Outlet context={{ toggleSidebar }} />
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useOutletContext } from 'react-router-dom';
 import { getStoredUsers, saveStoredUsers } from '../data/mockData';
 import { 
   MapPin, 
@@ -19,11 +19,13 @@ import {
   X, 
   ChevronDown, 
   Zap,
-  MessageSquare
+  MessageSquare,
+  Menu
 } from 'lucide-react';
 import '../WebStyle/nearby.css';
 
 function Nearby() {
+  const { toggleSidebar } = useOutletContext();
   const location = useLocation();
   // Navigation Screens: 'discover' | 'feed_map' | 'user_card' | 'chat' | 'plan_meet'
   const [currentScreen, setCurrentScreen] = useState('discover');
@@ -205,6 +207,9 @@ function Nearby() {
       {/* 1. Global Header (Shared by Discover & Feed/Map Screens) */}
       {(currentScreen === 'discover' || currentScreen === 'feed_map') && (
         <header className="nearby-header">
+          <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+            <Menu size={24} />
+          </button>
           <div className="location-selector">
             <MapPin size={20} className="text-purple-400" style={{ color: '#7b61ff' }} />
             <span className="location-text">{activeUser.location}</span>

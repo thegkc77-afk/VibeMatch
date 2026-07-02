@@ -36,52 +36,10 @@
   z-index: 0;
 }
 
-/* Mobile Toggle Header */
-.dashboard-mobile-header {
-  display: none;
-  height: 60px;
-  background: rgba(15, 15, 25, 0.6);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  align-items: center;
-  padding: 0 16px;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 90;
-  box-sizing: border-box;
-}
-
-.hamburger-btn {
-  background: none;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
-  border-radius: 8px;
-}
-
-.hamburger-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.mobile-logo-text {
-  font-weight: 800;
-  font-size: 18px;
-  background: linear-gradient(90deg, #B9A7FF 0%, #F7A8C8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .dashboard-mobile-header {
-    display: flex;
+  .dashboard-container {
+    flex-direction: column;
   }
 
   .sidebar {

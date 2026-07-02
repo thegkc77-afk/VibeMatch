@@ -1534,6 +1534,23 @@
   background: #6244ea;
 }
 
+.dashboard-hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.dashboard-hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* ===== Responsive Tweaks for Nearby Screen ===== */
 @media (max-width: 1024px) {
   .nearby-container {
@@ -1542,9 +1559,28 @@
 }
 
 @media (max-width: 768px) {
+  .dashboard-hamburger-btn {
+    display: flex;
+  }
+  .nearby-header {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(18, 16, 29, 0.65);
+    padding: 12px 16px;
+  }
   .nearby-container {
-    padding: 12px 10px;
+    padding: 0 0 20px 0;
     gap: 16px;
+  }
+  .vibes-carousel {
+    padding: 8px 16px;
+  }
+  .filter-tabs-row {
+    padding: 0 16px;
+  }
+  .people-nearby-list {
+    padding: 0 16px;
   }
   .people-card {
     border-radius: 20px;
@@ -1554,10 +1590,25 @@
   }
   .radar-map-view {
     height: 400px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
 }
 
 @media (max-width: 580px) {
+  .chat-window, .plan-meet-window, .user-detail-card {
+    max-width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    box-shadow: none;
+  }
+  .user-detail-card {
+    background: #12101d;
+  }
   .people-card {
     flex-direction: column;
   }

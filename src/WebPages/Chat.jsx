@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useOutletContext } from 'react-router-dom';
 import { 
   MapPin, 
   Search, 
@@ -13,13 +13,15 @@ import {
   Check, 
   X,
   ChevronDown,
-  MessageSquare
+  MessageSquare,
+  Menu
 } from 'lucide-react';
 import { io } from 'socket.io-client';
 import { getStoredUsers, saveStoredUsers, ACTIVE_USER } from '../data/mockData';
 import '../WebStyle/chat.css';
 
 function Chat() {
+  const { toggleSidebar } = useOutletContext();
   const navigate = useNavigate();
   const location = useLocation();
   const chatBottomRef = useRef(null);
@@ -63,7 +65,7 @@ function Chat() {
           text = parsed.text;
           isInvite = parsed.isInvite;
           inviteDetails = parsed.inviteDetails;
-        } catch (e) {
+        } catch {
           // not JSON, fallback to plain text
         }
 
@@ -257,6 +259,9 @@ function Chat() {
     <div className="chatpage-container">
       {/* 1. Global Header */}
       <header className="chatpage-header">
+        <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={24} />
+        </button>
         <div className="location-selector">
           <MapPin size={20} style={{ color: '#7b61ff' }} />
           <span className="location-text">{ACTIVE_USER.location}</span>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { 
   Bell, 
   Heart, 
@@ -10,7 +10,8 @@ import {
   MessageCircle, 
   Trash2,
   ChevronDown,
-  UserCheck
+  UserCheck,
+  Menu
 } from 'lucide-react';
 import { ACTIVE_USER } from '../data/mockData';
 import '../WebStyle/notification.css';
@@ -69,6 +70,7 @@ const INITIAL_NOTIFICATIONS = [
 ];
 
 function Notification() {
+  const { toggleSidebar } = useOutletContext();
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
   const [activeTab, setActiveTab] = useState('all'); // 'all' | 'matches' | 'likes' | 'invitations'
@@ -138,6 +140,9 @@ function Notification() {
     <div className="notify-container">
       {/* 1. Dashboard Header */}
       <header className="notify-header">
+        <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={24} />
+        </button>
         <div className="location-selector" onClick={() => navigate('/nearby')}>
           <MapPin size={18} style={{ color: '#7b61ff' }} />
           <span className="location-text">{ACTIVE_USER.location}</span>

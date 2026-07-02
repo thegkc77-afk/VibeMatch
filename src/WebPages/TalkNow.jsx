@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Zap, MapPin, MessageSquare, ChevronDown, Sparkles, Heart } from 'lucide-react';
+import { useNavigate, useOutletContext } from 'react-router-dom';
+import { Zap, MapPin, MessageSquare, ChevronDown, Sparkles, Heart, Menu } from 'lucide-react';
 import '../WebStyle/TalkNow.css';
 
 // Pool of matched users matching the ones in Nearby.jsx
@@ -32,6 +32,7 @@ const POTENTIAL_MATCHES = [
 ];
 
 function TalkNow() {
+  const { toggleSidebar } = useOutletContext();
   const navigate = useNavigate();
   const [matchStatus, setMatchStatus] = useState('idle'); // 'idle' | 'matching' | 'found'
   const [matchedUser, setMatchedUser] = useState(null);
@@ -71,6 +72,9 @@ function TalkNow() {
     <div className="talknow-container">
       {/* Shared Dashboard Header */}
       <header className="talknow-header">
+        <button className="dashboard-hamburger-btn" onClick={toggleSidebar} aria-label="Toggle Sidebar">
+          <Menu size={24} />
+        </button>
         <div className="talknow-location">
           <MapPin size={18} style={{ color: '#7b61ff' }} />
           <span className="talknow-location-text">{activeUser.location}</span>
