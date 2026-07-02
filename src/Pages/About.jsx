@@ -23,8 +23,8 @@ function About() {
           We're rewriting the rules of local social networking. No more ghosting, no more bot profiles—just authentic vibes in your immediate vicinity.
         </p>
         <div className="about-hero-buttons">
-          <Link to="/getearlyaccess" className="primary-pill-btn">Get Started</Link>
-          <Link to="/explore" className="secondary-pill-btn">Find Saathi</Link>
+          <Link to="/GetEarlyAccess" className="primary-pill-btn">Get Started</Link>
+          <Link to="/GetEarlyAccess" className="secondary-pill-btn">Find Saathi</Link>
         </div>
       </section>
 

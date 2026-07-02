@@ -3,8 +3,9 @@
 import "../Style/CTABannar.css";
 import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
-const CTABanner = ({ onEarlyAccessClick }) => {
+const CTABanner = () => {
   return (
     <section className="cta-section">
       {/* Background Decorative Orbs */}
@@ -67,12 +68,11 @@ const CTABanner = ({ onEarlyAccessClick }) => {
 
           {/* Buttons */}
           <div className="cta-buttons">
-            <button
-              className="primary-btn"
-              onClick={onEarlyAccessClick}
-            >
-              Get Started Now
-            </button>
+            <Link to="/GetEarlyAccess">
+              <button className="primary-btn">
+                Get Started Now
+              </button>
+            </Link>
 
             <button className="secondary-btn">
               Learn More

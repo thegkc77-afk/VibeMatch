@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import '../Style/hero.css'
 import { LuZap, LuMapPin, LuMessageCircle, LuTarget } from "react-icons/lu";
 import pokieImg from '../assets/pokie.png';
@@ -21,8 +22,12 @@ function Hero() {
         </p>
 
         <div className="hero-buttons">
-          <button className="start-btn">Get Started</button>
-          <button className="explore-btn">Explore Nearby</button>
+          <Link to="/GetEarlyAccess">
+            <button className="start-btn">Get Started</button>
+          </Link>
+          <Link to="/GetEarlyAccess">
+            <button className="explore-btn">Explore Nearby</button>
+          </Link>
         </div>
 
         {/* React icon with features */}
